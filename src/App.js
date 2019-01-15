@@ -8,9 +8,25 @@ import Start from './components/Start'
 import Question from './components/Question'
 import End from './components/End'
 
-const questions = ['What is 2 + 2?', 'What is 1 + 1?']
-const options = [[4, 5, 8, 10], [2, 3, 4, 5]]
-const correct = [4, 2]
+const questions =
+[
+  'What is the capital of California?',
+  'What is the capital of New York?',
+  'What is the capital of Nevada',
+  'What is the capital of China?'
+]
+const options =
+[
+  ['Sacramento', 'Boise', 'New York', 'Nova Scotia'],
+  ['Albany', 'Manhattan', 'The Bronx', 'Tribeca'],
+  ['Carson City', 'Reno', 'Las Vegas', 'Portland'],
+  ['Beijing', 'Shanghai', 'Hong Kong', 'Taiwan']
+]
+const correct =
+[
+  'Sacramento', 'Albany', 'Carson City', 'Beijing'
+]
+let checkArray = []
 
 // Let's us know current question
 let counter = 0;
@@ -23,10 +39,13 @@ class App extends Component {
     correct: 0
   }
   checkIfCorrect = (e) => {
-    if (correct[counter-1] === parseInt(e.target.innerHTML)) {
+    if (correct[counter-1] === e.target.innerHTML) {
       this.setState({
         correct: this.state.correct + 1
       })
+      checkArray.push('Correct')
+    } else {
+      checkArray.push('Incorrect')
     }
   }
   handleRestart = (e) => {
@@ -40,6 +59,7 @@ class App extends Component {
       options: options[counter-1],
       correctAnswer: correct[counter-1]
     })
+    checkArray = []
   }
   handleStart = (e) => {
     e.preventDefault()
@@ -62,13 +82,14 @@ class App extends Component {
     })
   }
   render() {
+    console.log(checkArray)
     return (
       <Container textAlign="center" style={{width: '60vw'}}>
       {
         (counter === 0) ? <Start length={questions.length} counter={counter} handleStart={this.handleStart}/> :
         (counter - 1 === questions.length) ?
-        <End length={questions.length} correct={this.state.correct} handleRestart={this.handleRestart}/> :
-        <Question question={this.state.question} options={this.state.options} counter={counter} handleClick={this.handleClick}/>
+        <End length={questions.length} correct={this.state.correct} handleRestart={this.handleRestart} questions={questions} checkArray={checkArray}/> :
+        <Question question={this.state.question} options={this.state.options} counter={counter} handleClick={this.handleClick} questions={questions} checkArray={checkArray}/>
       }
       </Container>
     );

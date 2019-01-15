@@ -7,7 +7,9 @@ const End = (props) => {
   return (
     <React.Fragment>
       <h1 style={{marginTop: '3rem'}}>Thanks for playing!</h1>
-      <QuestionBox end={true}/>
+
+      <QuestionBox questions = {props.questions} checkArray = {props.checkArray} end = {true}/>
+
       <Divider />
       <br/>
       <br/>

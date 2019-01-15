@@ -3,10 +3,14 @@ import { Button } from 'semantic-ui-react'
 
 class QuestionBox extends React.Component {
   render() {
+    console.log(this.props.checkArray)
     return (
       <div>
-        <Button color={(this.props.end === true) ? ((this.props.correct === true) ? 'green' : 'red') : null}>1</Button>
-        <Button>2</Button>
+        {this.props.questions.map((x, index) =>
+          <Button key={Math.random()} color={(this.props.end === false) ? null : ((this.props.checkArray[index] === 'Correct') ? 'green' : 'red')}>
+            {index + 1}
+          </Button>
+        )}
       </div>
     )
   }

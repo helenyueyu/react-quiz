@@ -5,6 +5,7 @@ import QuestionHeader from './QuestionHeader'
 import QuestionBox from './QuestionBox'
 import QuestionOptions from './QuestionOptions'
 
+
 const Question = (props) => {
   return (
     <React.Fragment>
@@ -12,7 +13,7 @@ const Question = (props) => {
       React Quiz
       </Header>
 
-      <QuestionBox end={false}/>
+      <QuestionBox questions = {props.questions} checkArray = {props.checkArray} end = {false} />
 
       <Divider />
 
