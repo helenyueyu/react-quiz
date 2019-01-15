@@ -1,6 +1,8 @@
 import React from 'react'
+import { Button } from 'semantic-ui-react'
 
 class Start extends React.Component {
+  getMinutes = () => Math.floor(Math.random() * 20)
   getGreeting = () => {
     let today = new Date()
     let hour = today.getHours()
@@ -10,10 +12,15 @@ class Start extends React.Component {
   }
   render() {
     return (
-      <div>
+      <div style={{marginTop: '5rem'}}>
         <h1>{this.getGreeting()}</h1>
-        <p>This quiz is 10 questions and will take approximately {Math.floor(Math.random()*20)} minutes to complete.</p>
-        <button onClick={this.props.handleStart}>Begin</button>
+        <p style={{fontSize: '1.2rem', width: '40vw', margin: 'auto'}}>This quiz is <b>{this.props.length} questions </b> and will take approximately {this.getMinutes()} minutes to complete.</p>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <Button onClick={this.props.handleStart}>Begin</Button>
       </div>
     )
   }

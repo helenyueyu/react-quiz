@@ -2,6 +2,7 @@ import React from 'react'
 import { Divider, Button, Header } from 'semantic-ui-react'
 
 import QuestionHeader from './QuestionHeader'
+import QuestionBox from './QuestionBox'
 import QuestionOptions from './QuestionOptions'
 
 const Question = (props) => {
@@ -10,6 +11,8 @@ const Question = (props) => {
       <Header as="h1" style={{marginTop: '3rem'}}>
       React Quiz
       </Header>
+
+      <QuestionBox end={false}/>
 
       <Divider />
 

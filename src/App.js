@@ -29,6 +29,18 @@ class App extends Component {
       })
     }
   }
+  handleRestart = (e) => {
+    e.preventDefault()
+    counter = 0
+    this.setState({
+      correct: 0
+    })
+    this.setState({
+      question: questions[counter-1],
+      options: options[counter-1],
+      correctAnswer: correct[counter-1]
+    })
+  }
   handleStart = (e) => {
     e.preventDefault()
     counter ++
@@ -53,9 +65,9 @@ class App extends Component {
     return (
       <Container textAlign="center" style={{width: '60vw'}}>
       {
-        (counter === 0) ? <Start counter={counter} handleStart={this.handleStart}/> :
+        (counter === 0) ? <Start length={questions.length} counter={counter} handleStart={this.handleStart}/> :
         (counter - 1 === questions.length) ?
-        <End length={questions.length} correct={this.state.correct}/> :
+        <End length={questions.length} correct={this.state.correct} handleRestart={this.handleRestart}/> :
         <Question question={this.state.question} options={this.state.options} counter={counter} handleClick={this.handleClick}/>
       }
       </Container>
