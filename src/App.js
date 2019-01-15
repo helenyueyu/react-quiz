@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
 import './App.css';
-import { Container, Divider, Button } from 'semantic-ui-react'
+import { Container, Divider, Button, Header } from 'semantic-ui-react'
+
+import 'semantic-ui-css/semantic.min.css';
+
+import Question from './components/Question'
+import End from './components/End'
 
 const questions = ['What is 2 + 2?', 'What is 1 + 1?']
 const options = [[4, 5, 8, 10], [2, 3, 4, 5]]
@@ -35,14 +40,11 @@ class App extends Component {
   }
   render() {
     return (
-      <Container textAlign="center">
-      <Divider />
+      <Container textAlign="center" style={{width: '60vw'}}>
       {
         (counter === questions.length) ?
-        <h1>Thanks for playing! You have {this.state.correct}/{questions.length} correct!</h1> :
-        <React.Fragment><h2>React Quiz</h2>
-        <h3>{counter + 1}) {this.state.question}</h3>
-        {this.state.options.map(x => <li key={Math.random()}><Button primary onClick={this.handleClick}>{x}</Button></li>)}</React.Fragment>
+        <End length={questions.length} correct={this.state.correct}/> :
+        <Question question={this.state.question} options={this.state.options} counter={counter} handleClick={this.handleClick}/>
       }
       </Container>
     );
