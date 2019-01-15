@@ -6,7 +6,7 @@ import QuestionBox from './QuestionBox'
 const End = (props) => {
   return (
     <React.Fragment>
-      <h1 style={{marginTop: '3rem'}}>Thanks for playing!</h1>
+      <h1>Thanks for playing!</h1>
 
       <QuestionBox questions = {props.questions} checkArray = {props.checkArray} end = {true}/>
 

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import { Container } from 'semantic-ui-react'
+import { Container, Button } from 'semantic-ui-react'
 
 import 'semantic-ui-css/semantic.min.css';
 
@@ -13,6 +13,10 @@ const questions =
   'What is the capital of California?',
   'What is the capital of New York?',
   'What is the capital of Nevada',
+  'What is the capital of China?',
+  'What is the capital of California?',
+  'What is the capital of New York?',
+  'What is the capital of Nevada',
   'What is the capital of China?'
 ]
 const options =
@@ -20,10 +24,15 @@ const options =
   ['Sacramento', 'Boise', 'New York', 'Nova Scotia'],
   ['Albany', 'Manhattan', 'The Bronx', 'Tribeca'],
   ['Carson City', 'Reno', 'Las Vegas', 'Portland'],
+  ['Beijing', 'Shanghai', 'Hong Kong', 'Taiwan'],
+  ['Sacramento', 'Boise', 'New York', 'Nova Scotia'],
+  ['Albany', 'Manhattan', 'The Bronx', 'Tribeca'],
+  ['Carson City', 'Reno', 'Las Vegas', 'Portland'],
   ['Beijing', 'Shanghai', 'Hong Kong', 'Taiwan']
 ]
 const correct =
 [
+  'Sacramento', 'Albany', 'Carson City', 'Beijing',
   'Sacramento', 'Albany', 'Carson City', 'Beijing'
 ]
 let checkArray = []
@@ -36,7 +45,8 @@ class App extends Component {
     question: questions[counter],
     options: options[counter],
     correctAnswer: correct[counter],
-    correct: 0
+    correct: 0,
+    darkMode: false
   }
   checkIfCorrect = (e) => {
     if (correct[counter-1] === e.target.innerHTML) {
@@ -84,13 +94,15 @@ class App extends Component {
   render() {
     console.log(checkArray)
     return (
-      <Container textAlign="center" style={{width: '60vw'}}>
+      <Container textAlign="center" style={(this.state.darkMode === false) ? {height: '100vh', width: '60vw', padding: '3rem'} : {height: '100vh', width: '60vw', padding: '3rem', backgroundColor: 'black', color: 'white'}}>
       {
         (counter === 0) ? <Start length={questions.length} counter={counter} handleStart={this.handleStart}/> :
         (counter - 1 === questions.length) ?
         <End length={questions.length} correct={this.state.correct} handleRestart={this.handleRestart} questions={questions} checkArray={checkArray}/> :
-        <Question question={this.state.question} options={this.state.options} counter={counter} handleClick={this.handleClick} questions={questions} checkArray={checkArray}/>
+        <Question question={this.state.question} options={this.state.options} counter={counter} handleClick={this.handleClick} questions={questions} checkArray={checkArray} darkMode={this.state.darkMode}/>
       }
+      <br/>
+      <Button style={{marginTop: '3rem'}} onClick={() => {this.setState({darkMode: !this.state.darkMode})}}>{(this.state.darkMode === false) ? "Dark Mode" : "Light Mode"}</Button>
       </Container>
     );
   }

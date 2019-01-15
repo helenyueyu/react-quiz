@@ -9,7 +9,7 @@ import QuestionOptions from './QuestionOptions'
 const Question = (props) => {
   return (
     <React.Fragment>
-      <Header as="h1" style={{marginTop: '3rem'}}>
+      <Header as="h1" color={(props.darkMode === false) ? 'black' : 'grey'}>
       React Quiz
       </Header>
 
