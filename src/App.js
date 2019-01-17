@@ -94,7 +94,7 @@ class App extends Component {
   render() {
     console.log(checkArray)
     return (
-      <Container textAlign="center" style={(this.state.darkMode === false) ? {height: '100vh', width: '60vw', padding: '3rem'} : {height: '100vh', width: '60vw', padding: '3rem', backgroundColor: 'black', color: 'white'}}>
+      <Container textAlign="center" style={(this.state.darkMode === false) ? {height: '100vh', width: '60vw', padding: '3rem'} : {height: '100vh', width: '60vw', padding: '3rem', backgroundColor: 'rgba(0,0,0,0.8)', color: 'grey'}}>
       {
         (counter === 0) ? <Start length={questions.length} counter={counter} handleStart={this.handleStart}/> :
         (counter - 1 === questions.length) ?

@@ -13,13 +13,13 @@ const Question = (props) => {
       React Quiz
       </Header>
 
-      <QuestionBox questions = {props.questions} checkArray = {props.checkArray} end = {false} />
+      <QuestionBox questions={props.questions} checkArray={props.checkArray} end={false} darkMode={props.darkMode}/>
 
       <Divider />
 
       <QuestionHeader counter={props.counter} question={props.question}/>
 
-      <QuestionOptions options={props.options} handleClick={props.handleClick} />
+      <QuestionOptions options={props.options} darkMode={props.darkMode} handleClick={props.handleClick} />
       </React.Fragment>
   )
 }
