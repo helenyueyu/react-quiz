@@ -1,0 +1,1 @@
+{"version":3,"sources":["/Users/helenyu/Desktop/React/react-quiz/src/App.css","main.a0c2da3c.chunk.css"],"names":[],"mappings":"AAAA,KACE,iBCCF,CDEA,GACE,eCCF","file":"main.a0c2da3c.chunk.css","sourcesContent":[".App {\n  text-align: center;\n}\n\nli {\n  list-style: none\n}\n",".App {\n  text-align: center;\n}\n\nli {\n  list-style: none\n}\n\n"]}
